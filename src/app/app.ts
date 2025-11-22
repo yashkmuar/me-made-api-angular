@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class App {
   protected readonly title = signal('jsonserver-api-angular');
   users:User[]=[];
+  updatedUser: User | undefined;
   constructor(private userService:Users){
 
   }
@@ -47,6 +48,9 @@ export class App {
   }
 
   updateUser(id:string){
-    console.log(id);
+    this.userService.updateUsers(id).subscribe((data:User) => {
+      console.log(data);
+      this.updatedUser=data;
+    })
   }
 }
