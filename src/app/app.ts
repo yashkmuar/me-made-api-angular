@@ -1,23 +1,25 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Users } from './service/users';
+import { User } from './interfaces/user';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 export class App {
   protected readonly title = signal('jsonserver-api-angular');
-  users:any;
+  users:User[]=[];
   constructor(private userService:Users){
 
   }
   ngOnInit(){
-    this.userService.getUsers().subscribe((data:any) => {
+    this.userService.getUsers().subscribe((data:User[]) => {
       this.users=data;
-      console.log(data);
+      console.log(this.users);
     });
   }
 }

@@ -1,5 +1,5 @@
-export interface User{
-    name:string,
-    age:number,
-    emai:string
+export interface User {
+    id: number;
+    name: string;
+    email?: string;
 }
