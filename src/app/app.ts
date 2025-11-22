@@ -25,6 +25,8 @@ export class App {
   }
 
   addUser(user:User){
-    console.log(user);
+    this.userService.saveUsers(user).subscribe((data:User) => {
+      console.log(data);
+    })
   }
 }
