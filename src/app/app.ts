@@ -10,8 +10,13 @@ import { Users } from './service/users';
 })
 export class App {
   protected readonly title = signal('jsonserver-api-angular');
+  users:any;
   constructor(private userService:Users){
 
   }
-  
+  ngOnInit(){
+    this.userService.getUsers().subscribe((data:any) => {
+      this.users=data;
+    });
+  }
 }
