@@ -20,4 +20,9 @@ export class Users {
   const url="http://localhost:3000/users";
   return this.http.post<User>(url,user);
   }
+
+  deleteUsers(id:string):Observable<User>{
+    const url="http://localhost:3000/users";
+    return this.http.delete<User>(url + "/" + id);
+  }
 }
