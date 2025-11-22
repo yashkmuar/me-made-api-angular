@@ -2,11 +2,12 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Users } from './service/users';
 import { User } from './interfaces/user';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
@@ -21,5 +22,9 @@ export class App {
       this.users=data;
       console.log(this.users);
     });
+  }
+
+  addUser(data:any){
+    console.log(data);
   }
 }
