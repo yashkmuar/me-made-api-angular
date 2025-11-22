@@ -24,7 +24,7 @@ export class App {
     });
   }
 
-  addUser(data:any){
-    console.log(data);
+  addUser(user:User){
+    console.log(user);
   }
 }
