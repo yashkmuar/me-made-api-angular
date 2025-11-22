@@ -45,4 +45,8 @@ export class App {
       console.log(data);
     })
   }
+
+  updateUser(id:string){
+    console.log(id);
+  }
 }
