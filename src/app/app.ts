@@ -38,6 +38,8 @@ export class App {
   }
 
   deleteUser(id:string){
-    console.log(id);
+    this.userService.deleteUsers(id).subscribe((data:User) => {
+      console.log(data);
+    })
   }
 }
