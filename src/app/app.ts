@@ -17,6 +17,7 @@ export class App {
   ngOnInit(){
     this.userService.getUsers().subscribe((data:any) => {
       this.users=data;
+      console.log(data);
     });
   }
 }
