@@ -7,50 +7,54 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 export class App {
   protected readonly title = signal('jsonserver-api-angular');
-  users:User[]=[];
+  users: User[] = [];
   updatedUser: User | undefined;
-  constructor(private userService:Users){
+  constructor(private userService: Users) {
 
   }
-  ngOnInit(){
+  ngOnInit() {
     this.getUser();
   }
 
-  getUser(){
-    this.userService.getUsers().subscribe((data:User[]) => {
-      this.users=data;
+  getUser() {
+    this.userService.getUsers().subscribe((data: User[]) => {
+      this.users = data;
       console.log(this.users);
     });
   }
 
-  addUser(user:User){
-    this.userService.saveUsers(user).subscribe((data:User) => {
-      if(data){
+  addUser(user: User) {
+    if (!this.updatedUser) {
+      this.userService.saveUsers(user).subscribe((data: User) => {
+        if (data) {
+          this.getUser();
+        }
+        console.log(data);
+      })
+    } else {
+      console.log(user);
+    }
+  }
+
+  deleteUser(id: string) {
+    this.userService.deleteUsers(id).subscribe((data: User) => {
+      if (data) {
         this.getUser();
       }
       console.log(data);
     })
   }
 
-  deleteUser(id:string){
-    this.userService.deleteUsers(id).subscribe((data:User) => {
-      if(data){
-        this.getUser();
-      }
+  updateUser(id: string) {
+    this.userService.updateUsers(id).subscribe((data: User) => {
       console.log(data);
-    })
-  }
-
-  updateUser(id:string){
-    this.userService.updateUsers(id).subscribe((data:User) => {
-      console.log(data);
-      this.updatedUser=data;
+      this.updatedUser = data;
     })
   }
 }
