@@ -38,7 +38,12 @@ export class App {
         console.log(data);
       })
     } else {
-      console.log("Update user here " ,  user);
+      const userdata={...user,id:this.updatedUser.id}
+      this.userService.upUsers(userdata).subscribe((data:User) => {
+        if(data){
+          this.getUser();
+        }
+      })
     }
   }
 
