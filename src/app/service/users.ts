@@ -18,6 +18,6 @@ export class Users {
 
   saveUsers(user:User):Observable<User>{
   const url="http://localhost:3000/users";
-  return this.http.post<User>(url,{user});
+  return this.http.post<User>(url,user);
   }
 }

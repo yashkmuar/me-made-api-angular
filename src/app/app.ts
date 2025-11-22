@@ -18,6 +18,10 @@ export class App {
 
   }
   ngOnInit(){
+    this.getUser();
+  }
+
+  getUser(){
     this.userService.getUsers().subscribe((data:User[]) => {
       this.users=data;
       console.log(this.users);
@@ -26,6 +30,9 @@ export class App {
 
   addUser(user:User){
     this.userService.saveUsers(user).subscribe((data:User) => {
+      if(data){
+        this.getUser();
+      }
       console.log(data);
     })
   }
