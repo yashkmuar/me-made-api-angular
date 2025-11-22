@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +10,8 @@ export class Users {
 
   }
 
-  getUsers(){
+  getUsers():Observable<Users[]>{
     const url="http://localhost:3000/users"
-    return this.http.get(url);
+    return this.http.get<Users[]>(url);
   }
 }
