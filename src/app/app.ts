@@ -36,4 +36,8 @@ export class App {
       console.log(data);
     })
   }
+
+  deleteUser(id:string){
+    console.log(id);
+  }
 }
